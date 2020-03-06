@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-api-masterclass",
+  "version": "1.0.0",
+  "description": "Devcamper backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlesferreira/nodejs-api-masterclass.git"
+  },
+  "author": "Charles Ferreira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charlesferreira/nodejs-api-masterclass/issues"
+  },
+  "homepage": "https://github.com/charlesferreira/nodejs-api-masterclass#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
