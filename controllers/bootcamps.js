@@ -8,9 +8,7 @@ const ErrorResponse = require('../utils/errorResponse');
 exports.getBootcamps = asyncHandler(async (req, res, next) => {
   const bootcamps = await Bootcamp.find();
 
-  res
-    .status(200)
-    .json({ success: true, count: bootcamps.length, data: bootcamps });
+  res.status(200).json({ bootcamps });
 });
 
 // @desc      Get single bootcamp
@@ -20,12 +18,10 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.findById(req.params.id);
 
   if (!bootcamp) {
-    return next(
-      new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404)
-    );
+    return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404));
   }
 
-  res.status(200).json({ success: true, data: bootcamp });
+  res.status(200).json({ bootcamp });
 });
 
 // @desc      Create new bootcamp
@@ -34,7 +30,7 @@ exports.getBootcamp = asyncHandler(async (req, res, next) => {
 exports.createBootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.create(req.body);
 
-  res.status(201).json({ success: true, data: bootcamp });
+  res.status(201).json({ bootcamp });
 });
 
 // @desc      Update bootcamp
@@ -47,12 +43,10 @@ exports.updateBootcamp = asyncHandler(async (req, res, next) => {
   });
 
   if (!bootcamp) {
-    return next(
-      new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404)
-    );
+    return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404));
   }
 
-  res.status(200).json({ success: true, data: bootcamp });
+  res.status(200).json({ bootcamp });
 });
 
 // @desc      Delete bootcamp
@@ -62,10 +56,8 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.findByIdAndDelete(req.params.id);
 
   if (!bootcamp) {
-    return next(
-      new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404)
-    );
+    return next(new ErrorResponse(`Bootcamp not found with ID of ${req.params.id}`, 404));
   }
 
-  res.status(200).json({ success: true, data: null });
+  res.status(204).json();
 });
